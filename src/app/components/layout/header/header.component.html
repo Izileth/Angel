@@ -1,0 +1,25 @@
+<nav class="fixed top-0 w-full z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800">
+  <div class="max-w-6xl mx-auto px-6 py-4">
+    <div class="flex justify-between items-center">
+      <div class="flex items-center space-x-8">
+        <h3 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+          Angular
+        </h3>
+        <div class="hidden md:flex space-x-6">
+          <a href="#" (click)="$event.preventDefault(); showSection('hero')" class="text-zinc-300 hover:text-white transition-colors">Home</a>
+          <a href="#" (click)="$event.preventDefault(); showSection('dashboard')" class="text-zinc-300 hover:text-white transition-colors">Dashboard</a>
+          <a href="#" (click)="$event.preventDefault(); showSection('transactions')" class="text-zinc-300 hover:text-white transition-colors">Transações</a>
+          <a href="#" (click)="$event.preventDefault(); showSection('investments')" class="text-zinc-300 hover:text-white transition-colors">Investimentos</a>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <button class="px-4 py-2 text-zinc-300 hover:text-white transition-colors">
+          Login
+        </button>
+        <button class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:shadow-lg transition-all duration-300">
+          Cadastrar
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

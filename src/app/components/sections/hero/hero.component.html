@@ -1,0 +1,27 @@
+<section id="hero-section" class="relative flex flex-col justify-center items-center w-full h-screen bg-gradient-to-b from-transparent to-zinc-950/50 pt-20">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 50px 50px;"></div>
+  </div>
+  <div class="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-full blur-xl animate-pulse"></div>
+  <div class="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-br from-green-500/20 to-blue-500/20 rounded-full blur-xl animate-pulse" style="animation-delay: 2s;"></div>
+  <div class="text-center z-10 max-w-4xl mx-auto px-6">
+    <h1 class="text-6xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-green-400 bg-clip-text text-transparent mb-6 animate-fade-in">
+       Angular
+    </h1>
+    <p class="text-xl md:text-2xl text-zinc-300 mb-8 animate-fade-in" style="animation-delay: 0.3s;">
+      O futuro das finanças digitais está aqui
+    </p>
+    <p class="text-lg text-zinc-400 mb-12 max-w-2xl mx-auto animate-fade-in" style="animation-delay: 0.6s;">
+      Revolucione sua experiência financeira com nossa plataforma de última geração. 
+      Pagamentos instantâneos, investimentos inteligentes e controle total nas suas mãos.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in" style="animation-delay: 0.9s;">
+      <button (click)="showSection('dashboard')" class="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:shadow-2xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300">
+        Ver Dashboard
+      </button>
+      <button (click)="showSection('features')" class="px-8 py-4 border-2 border-zinc-600 text-zinc-300 font-semibold rounded-full hover:border-blue-500 hover:text-blue-400 transition-all duration-300">
+        Explorar Recursos
+      </button>
+    </div>
+  </div>
+</section>

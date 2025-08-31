@@ -1,0 +1,64 @@
+<section id="dashboard-section" class="py-20 px-6 pt-32">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+        Seu <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">Dashboard</span>
+      </h2>
+      <p class="text-xl text-zinc-400">Visão completa das suas finanças em tempo real</p>
+    </div>
+
+    <!-- Account Balance Cards -->
+    <div class="grid md:grid-cols-3 gap-6 mb-12">
+      <div *ngFor="let account of accounts" [ngClass]="getAccountCardClass(account.name)">
+        <div class="flex items-center justify-between mb-4">
+          <h3 [ngClass]="getAccountTitleClass(account.name)">{{ account.name }}</h3>
+          <div [innerHTML]="getAccountIcon(account.name)"></div>
+        </div>
+        <div class="text-3xl font-bold text-white mb-2">{{ account.balance | currency:'BRL' }}</div>
+        <div class="text-sm text-green-400" *ngIf="account.change > 0">+{{ account.change }}% este mês</div>
+      </div>
+    </div>
+
+    <!-- Chart and Quick Actions -->
+    <div class="grid lg:grid-cols-2 gap-8 mb-12">
+      <!-- Chart -->
+      <div class="bg-gradient-to-b from-zinc-900/50 to-zinc-900/20 backdrop-blur-sm border border-zinc-800 rounded-2xl p-6">
+        <h3 class="text-xl font-bold text-white mb-6">Evolução Patrimonial</h3>
+        <div class="relative h-64">
+          <canvas #chartCanvas class="w-full h-full"></canvas>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="bg-gradient-to-b from-zinc-900/50 to-zinc-900/20 backdrop-blur-sm border border-zinc-800 rounded-2xl p-6">
+        <h3 class="text-xl font-bold text-white mb-6">Ações Rápidas</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <button (click)="openModal('transfer')" class="p-4 bg-blue-600/20 border border-blue-500/30 rounded-xl text-center hover:bg-blue-600/30 transition-all duration-300">
+            <svg class="w-8 h-8 text-blue-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+            </svg>
+            <span class="text-sm text-white">Transferir</span>
+          </button>
+          <button (click)="openModal('payment')" class="p-4 bg-purple-600/20 border border-purple-500/30 rounded-xl text-center hover:bg-purple-600/30 transition-all duration-300">
+            <svg class="w-8 h-8 text-purple-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+            </svg>
+            <span class="text-sm text-white">Pagar</span>
+          </button>
+          <button (click)="openModal('deposit')" class="p-4 bg-green-600/20 border border-green-500/30 rounded-xl text-center hover:bg-green-600/30 transition-all duration-300">
+            <svg class="w-8 h-8 text-green-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+            <span class="text-sm text-white">Depositar</span>
+          </button>
+          <button (click)="openModal('invest')" class="p-4 bg-yellow-600/20 border border-yellow-500/30 rounded-xl text-center hover:bg-yellow-600/30 transition-all duration-300">
+            <svg class="w-8 h-8 text-yellow-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+            </svg>
+            <span class="text-sm text-white">Investir</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

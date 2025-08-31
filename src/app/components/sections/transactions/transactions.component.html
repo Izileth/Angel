@@ -1,0 +1,67 @@
+<section id="transactions-section" class="py-20 px-6 pt-32">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+        Suas <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">Transações</span>
+      </h2>
+      <p class="text-xl text-zinc-400">Histórico completo de movimentações</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="flex flex-wrap gap-4 mb-8">
+      <select class="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:border-blue-500 focus:outline-none">
+        <option>Todos os tipos</option>
+        <option>Transferências</option>
+        <option>Pagamentos</option>
+        <option>Depósitos</option>
+      </select>
+      <select class="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-white focus:border-blue-500 focus:outline-none">
+        <option>Último mês</option>
+        <option>Últimos 3 meses</option>
+        <option>Último ano</option>
+      </select>
+      <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+        Filtrar
+      </button>
+    </div>
+
+    <!-- Transactions Table -->
+    <div class="bg-gradient-to-b from-zinc-900/50 to-zinc-900/20 backdrop-blur-sm border border-zinc-800 rounded-2xl overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead class="bg-zinc-800/50">
+            <tr>
+              <th class="px-6 py-4 text-left text-sm font-medium text-zinc-300">Data</th>
+              <th class="px-6 py-4 text-left text-sm font-medium text-zinc-300">Descrição</th>
+              <th class="px-6 py-4 text-left text-sm font-medium text-zinc-300">Categoria</th>
+              <th class="px-6 py-4 text-right text-sm font-medium text-zinc-300">Valor</th>
+              <th class="px-6 py-4 text-center text-sm font-medium text-zinc-300">Status</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-800" id="transactions-table">
+            <tr *ngFor="let tx of transactions">
+              <td class="px-6 py-4 whitespace-nowrap text-zinc-300">{{ tx.date | date:'dd/MM/yyyy' }}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-zinc-300">{{ tx.description }}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-zinc-400">{{ tx.category }}</td>
+              <td class="px-6 py-4 whitespace-nowrap text-right font-medium" [ngClass]="tx.amount > 0 ? 'text-green-400' : 'text-red-400'">
+                {{ tx.amount | currency:'BRL' }}
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-center">
+                <span class="px-3 py-1 text-xs font-medium rounded-full" [ngClass]="getStatusClass(tx.status)">
+                  {{ tx.status | titlecase }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Load More Button -->
+    <div class="text-center mt-8">
+      <button (click)="loadMoreTransactions()" class="px-8 py-3 border-2 border-zinc-600 text-zinc-300 font-medium rounded-full hover:border-blue-500 hover:text-blue-400 transition-all duration-300">
+        Carregar Mais
+      </button>
+    </div>
+  </div>
+</section>
